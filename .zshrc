@@ -5,7 +5,10 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="agnoster"
+
+DEFAULT_USER="eric"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -67,7 +70,7 @@ alias xo='xdg-open'
 alias e='emacs -nw'
 
 alias jj="java -jar"
-alias openCVToMaven='mvn install:install-file -Dfile=/usr/local/share/OpenCV/java/opencv-2.4.9.jar -DgroupId=opencv -DartifactId=opencv -Dversion=2.4.9 -Dpackaging=jar'
+alias openCVToMaven='mvn install:install-file -Dfile=/usr/local/share/OpenCV/java/opencv-290.jar -DgroupId=opencv -DartifactId=opencv -Dversion=2.4.9 -Dpackaging=jar'
 alias openCVClearIvy='rm -rf ~/.ivy2/cache/opencv'
 alias openCVUpdateIvy='openCVToMaven; openCVClearIvy'
 alias pbcopy='xclip -selection clipboard'
