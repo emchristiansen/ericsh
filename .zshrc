@@ -5,8 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-#ZSH_THEME="agnoster"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 DEFAULT_USER="eric"
 
@@ -48,7 +48,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin:~/bin/play:~/Library/Haskell/bin
+export PATH=~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin:~/bin/play:~/Library/Haskell/bin
 
 ################################################################################ 
 # Git
@@ -67,8 +67,6 @@ alias szsh='source ~/.zshrc'
 alias rh="runhaskell"
 alias xo='xdg-open'
 alias e='emacs -nw'
-
-alias play2102='~/Downloads/Play20/play'
 
 alias jj="java -jar"
 alias openCVToMaven='mvn install:install-file -Dfile=/usr/local/share/OpenCV/java/opencv-290.jar -DgroupId=opencv -DartifactId=opencv -Dversion=2.4.9 -Dpackaging=jar'
