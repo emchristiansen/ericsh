@@ -48,9 +48,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin
-
-#! /usr/bin/zsh
+export PATH=/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin:~/bin/play:~/Library/Haskell/bin
 
 ################################################################################ 
 # Git
@@ -64,10 +62,13 @@ function gcmp() { git commit -au -m "$@" ; git push; } # GCM and push
 ################################################################################ 
 
 alias ezsh='e ~/.zshrc'
+alias szsh='source ~/.zshrc'
 
 alias rh="runhaskell"
 alias xo='xdg-open'
 alias e='emacs -nw'
+
+alias play2102='~/Downloads/Play20/play'
 
 alias jj="java -jar"
 alias openCVToMaven='mvn install:install-file -Dfile=/usr/local/share/OpenCV/java/opencv-290.jar -DgroupId=opencv -DartifactId=opencv -Dversion=2.4.9 -Dpackaging=jar'
