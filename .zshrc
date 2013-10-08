@@ -48,7 +48,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin:~/bin/play:~/Library/Haskell/bin
+export PATH=~/.cabal/bin:~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/bin/play:~/Library/Haskell/bin
 
 ################################################################################ 
 # Git
@@ -67,14 +67,17 @@ alias szsh='source ~/.zshrc'
 alias rh="runhaskell"
 alias xo='xdg-open'
 alias e='emacs -nw'
+alias v='vim'
 
 alias jj="java -jar"
-alias openCVToMaven='mvn install:install-file -Dfile=/usr/local/share/OpenCV/java/opencv-290.jar -DgroupId=opencv -DartifactId=opencv -Dversion=2.4.9 -Dpackaging=jar'
+alias openCVToMaven='mvn install:install-file -Dfile=/usr/local/share/OpenCV/java/opencv-300.jar -DgroupId=opencv -DartifactId=opencv -Dversion=3.0.0 -Dpackaging=jar'
 alias openCVClearIvy='rm -rf ~/.ivy2/cache/opencv'
 alias openCVUpdateIvy='openCVToMaven; openCVClearIvy'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias pwdcp='pwd | pbcopy'
+
+#export SBT_OPTS="-Xmx8g"
 
 # Kills all processes matching regex.
 function ekill() { ps aux | grep -e "$@" | grep -v grep | awk '{print $2}' | xargs -i kill -9 {}; }
