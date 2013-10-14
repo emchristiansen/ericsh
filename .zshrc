@@ -48,7 +48,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=~/.cabal/bin:~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/bin/play:~/Library/Haskell/bin
+export PATH=~/.cabal/bin:~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/bin/play:~/bin/activator:~/Library/Haskell/bin
 
 ################################################################################ 
 # Git
@@ -62,6 +62,7 @@ function gcmp() { git commit -au -m "$@" ; git push; } # GCM and push
 ################################################################################ 
 
 alias ezsh='e ~/.zshrc'
+alias vzsh='v ~/.zshrc'
 alias szsh='source ~/.zshrc'
 
 alias rh="runhaskell"
@@ -78,6 +79,7 @@ alias pbpaste='xclip -selection clipboard -o'
 alias pwdcp='pwd | pbcopy'
 
 #export SBT_OPTS="-Xmx8g"
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 
 # Kills all processes matching regex.
 function ekill() { ps aux | grep -e "$@" | grep -v grep | awk '{print $2}' | xargs -i kill -9 {}; }
