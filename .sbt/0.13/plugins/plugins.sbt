@@ -6,4 +6,4 @@ addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.1.2")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-pgp" % "0.8.1")
 
-//addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "0.9.0")
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "0.6.2")

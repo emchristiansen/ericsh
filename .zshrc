@@ -46,18 +46,19 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source ~/.secrets.sh
 
 # Customize to your needs...
-export PATH=~/.cabal/bin:~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/bin/play:~/bin/activator:~/Library/Haskell/bin
+export PATH=~/.cabal/bin:~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/bin/play:~/bin/activator:~/Library/Haskell/bin:/usr/local/MATLAB/R2013a/bin
 
 ################################################################################ 
 # Git
 
-alias gs='git status'
-alias gl='git log --stat'
+#alias gs='git status'
+#alias gl='git log --stat'
 
-function gcm() { git commit -au -m "$@" ;} # Fast git commit with message
-function gcmp() { git commit -au -m "$@" ; git push; } # GCM and push
+#function gcm() { git commit -au -m "$@" ;} # Fast git commit with message
+#function gcmp() { git commit -au -m "$@" ; git push; } # GCM and push
 
 ################################################################################ 
 

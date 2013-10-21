@@ -22,5 +22,21 @@
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Bundle command are not allowed.
 
-set colorcolumn=80
+" Vim columns are zero-indexed
+set colorcolumn=81
+
+" Disable annoying auto line break
+" http://superuser.com/questions/250112/textwidth-0-and-wrapwidth-0-in-vimrc-local-not-being-respected/256850#256850
+fu! local:disableBr()
+  set wrap
+  set linebreak
+  set nolist  " list disables linebreak
+  set textwidth=0
+  set wrapmargin=0
+  set fo-=t
+endfu
+
+" Disable line breaks for all file types
+:au BufNewFile,BufRead *.* call local:disableBr()
+
 
