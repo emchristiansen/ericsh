@@ -22,7 +22,7 @@
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Bundle command are not allowed.
 
-" Vim columns are zero-indexed
+" Vim columns are one-indexed
 set colorcolumn=81
 
 " Disable annoying auto line break

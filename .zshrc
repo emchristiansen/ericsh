@@ -49,7 +49,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.secrets.sh
 
 # Customize to your needs...
-export PATH=~/.cabal/bin:~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/bin/play:~/bin/activator:~/Library/Haskell/bin:/usr/local/MATLAB/R2013a/bin
+export PATH=~/.cabal/bin:~/bin/scalaIDE:~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/bin/play:~/bin/activator:~/Library/Haskell/bin:/usr/local/MATLAB/R2013a/bin
 
 ################################################################################ 
 # Git
@@ -70,6 +70,7 @@ alias rh="runhaskell"
 alias xo='xdg-open'
 alias e='emacs -nw'
 alias v='vim'
+alias s='~/bin/SublimeText2/sublime_text'
 
 alias jj="java -jar"
 alias openCVToMaven='mvn install:install-file -Dfile=/usr/local/share/OpenCV/java/opencv-300.jar -DgroupId=opencv -DartifactId=opencv -Dversion=3.0.0 -Dpackaging=jar'

@@ -103,7 +103,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 myConfig = gnomeConfig {
   manageHook = myManageHook,
   layoutHook = myLayoutHook,
-  modMask = mod4Mask,
+  modMask = mod1Mask,
   startupHook = setWMName "LG3D",
   keys = myKeys,
   workspaces = myWorkspaces }
