@@ -1,26 +1,34 @@
- set nocompatible               " be iMproved
- filetype off                   " required!
+set nocompatible               " be iMproved
+filetype off                   " required!
 
- set rtp+=~/.vim/bundle/vundle/
- call vundle#rc()
+let g:haskell_conceal_wide = 0
+let g:haskell_conceal = 0
+let g:haskell_conceal_enumerations = 0
 
- " let Vundle manage Vundle
- " required! 
- Bundle 'gmarik/vundle'
+if has('gui_running')
+  "set guifont=DejaVu_Sans_Mono:h10
+endif
 
- " My Bundles here:
- Bundle "dag/vim2hs"
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
- filetype plugin indent on     " required!
- "
- " Brief help
- " :BundleList          - list configured bundles
- " :BundleInstall(!)    - install(update) bundles
- " :BundleSearch(!) foo - search(or refresh cache first) for foo
- " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
- "
- " see :h vundle for more details or wiki for FAQ
- " NOTE: comments after Bundle command are not allowed.
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+Bundle "dag/vim2hs"
+
+filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed.
 
 " Vim columns are one-indexed
 set colorcolumn=81
@@ -38,5 +46,7 @@ endfu
 
 " Disable line breaks for all file types
 :au BufNewFile,BufRead *.* call local:disableBr()
+
+autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2
 
 
