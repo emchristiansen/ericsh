@@ -8,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
 
-DEFAULT_USER="eric"
+DEFAULT_USER="ericmc"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -46,7 +46,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.secrets.sh
+#source ~/.secrets.sh
 
 # Customize to your needs...
 export PATH=~/.cabal/bin:~/bin/scalaIDE:~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/bin/play:~/bin/activator:~/Library/Haskell/bin:/usr/local/MATLAB/R2013a/bin
