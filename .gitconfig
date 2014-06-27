@@ -1,6 +1,6 @@
 [user]
-	name = Eric Martin Christiansen
-	email = ericmartinchristiansen@gmail.com
+	name = Eric Christiansen
+	email = ericmc@google.com
 [github]
 	user = emchristiansen
 	token = 276a6c41b24122e1dc98638bf13149f4
@@ -9,5 +9,5 @@
 [push]
 	default = simple
 [core]
-	editor = vim
+	editor = emacs
 	filemode = false

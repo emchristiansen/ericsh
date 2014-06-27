@@ -1,34 +1,35 @@
-import XMonad
-import XMonad.Config.Gnome
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.SetWMName
-import XMonad.Layout.ThreeColumns
+import           XMonad
+import           XMonad.Config.Gnome
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.ManageHelpers
+import           XMonad.Hooks.SetWMName
+import           XMonad.Layout.ThreeColumns
 
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.SetWMName
-import XMonad.Prompt
-import XMonad.Prompt.Workspace
-import XMonad.Prompt.DirExec
-import XMonad.Actions.CycleWS
-import XMonad.Actions.WindowBringer
-import XMonad.Actions.UpdatePointer
-import XMonad.Layout.Dishes
-import XMonad.Layout.Accordion
-import XMonad.Layout.NoBorders
-import XMonad.Layout.Tabbed
-import XMonad.Layout.PerWorkspace
-import XMonad.Layout.MagicFocus
-import XMonad.Layout.Named
-import XMonad.Util.Run
-import XMonad.Layout.Grid
+import           XMonad.Actions.CycleWS
+import           XMonad.Actions.UpdatePointer
+import           XMonad.Actions.WindowBringer
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.SetWMName
+import           XMonad.Layout.Accordion
+import           XMonad.Layout.Dishes
+import           XMonad.Layout.Grid
+import qualified XMonad.Layout.GridVariants   as GV
+import           XMonad.Layout.MagicFocus
+import           XMonad.Layout.Named
+import           XMonad.Layout.NoBorders
+import           XMonad.Layout.PerWorkspace
+import           XMonad.Layout.Tabbed
+import           XMonad.Prompt
+import           XMonad.Prompt.DirExec
+import           XMonad.Prompt.Workspace
+import           XMonad.Util.Run
 
-import qualified Data.Map as M
+import qualified Data.Map                     as M
 
-import XMonad.Util.EZConfig
-import qualified XMonad.StackSet as W
-import System.Exit
+import           System.Exit
+import qualified XMonad.StackSet              as W
+import           XMonad.Util.EZConfig
 
 myManageHook = composeAll (
     [ manageHook gnomeConfig
@@ -40,7 +41,8 @@ myManageHook = composeAll (
 myLayoutHook = avoidStruts $ (ThreeColMid 1 (2 / 100) (1 / 3)) ||| standardLayouts
  where
   tall = Tall 1 (2 / 100) (1 / 2)
-  standardLayouts = tall ||| Mirror tall ||| Full ||| Grid
+  split = GV.SplitGrid GV.L 1 1 (1/2) (8/10) (5/100)
+  standardLayouts = tall ||| Mirror tall ||| Full ||| Grid ||| split
 
 myWorkspaces = map show [1 .. 21]
 

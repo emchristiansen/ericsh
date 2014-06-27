@@ -13,11 +13,12 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
 Bundle "dag/vim2hs"
+Bundle 'Blackrush/vim-gocode'
 
 filetype plugin indent on     " required!
 "
@@ -35,18 +36,65 @@ set colorcolumn=81
 
 " Disable annoying auto line break
 " http://superuser.com/questions/250112/textwidth-0-and-wrapwidth-0-in-vimrc-local-not-being-respected/256850#256850
-fu! local:disableBr()
-  set wrap
-  set linebreak
-  set nolist  " list disables linebreak
-  set textwidth=0
-  set wrapmargin=0
-  set fo-=t
-endfu
+"fu! local:disableBr()
+"  set wrap
+"  set linebreak
+"  set nolist  " list disables linebreak
+"  set textwidth=0
+"  set wrapmargin=0
+"  set fo-=t
+"endfu
 
 " Disable line breaks for all file types
 :au BufNewFile,BufRead *.* call local:disableBr()
 
 autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2
 
+set nofoldenable
 
+""""""""""""""""""""""""""""""""""""""""
+
+autocmd Filetype *.go setlocal tabstop=2
+
+source /usr/share/vim/google/google.vim
+
+"Glug youcompleteme-google
+
+"let g:ycm_filetype_specific_completion_to_disable = {'cpp': 1, 'c': 1}
+
+function FormatGoImportsProgram()
+  let cursor_position = getpos(".")
+  silent exe "%!/google/data/ro/teams/go/bin/goimports 2>/tmp/go.$USER.err"
+  if v:shell_error
+    undo
+  endif
+  call setpos('.', cursor_position)
+  silent exe "!sed --in-place -n 's/<standard input>/%/p' /tmp/go.$USER.err"
+
+  let w = winnr()       " Remember window number.
+  cf /tmp/go.$USER.err  " Pick up any errors from this file.
+  cwindow 3             " Open a 3-line window for errors, or close it if none.
+  " Switch back to the original window.
+  exe w . "wincmd w"
+  redraw!
+  echo "Formatted"
+endfunction
+
+autocmd BufWritePre *.go :silent call FormatGoImportsProgram()
+
+
+function RunGlaze()
+  let path = expand('%:p')
+  if match(path, "/google3/") > 0
+    let dir = fnamemodify(path, ':h')
+    silent exe "!glaze " . dir . " 2>/tmp/vim.glaze.$USER.err"
+    let w = winnr()       " Remember window number.
+    cf /tmp/vim.glaze.$USER.err  " Pick up any errors from this file.
+    cwindow 3             " Open window for errors
+    " Switch back to original window.
+    exe w . "wincmd w"
+    redraw!
+  endif
+endfunction
+
+autocmd BufWritePost *.go call RunGlaze()
