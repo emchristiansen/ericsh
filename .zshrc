@@ -58,6 +58,7 @@ export GOROOT=/usr/lib/google-golang
 export PATH=$PATH:$GOPATH/bin:$HOME/bin/google-cloud-sdk/bin:$HOME/bin/ImageJ:$HOME/bin/julia
 export PATH=~/.cabal/bin:$PATH
 export PATH=~/bin/blender:$PATH
+export PATH=~/bin/stylish-haskell/.cabal-sandbox/bin:$PATH:~/bin/go_appengine
 
 ################################################################################
 # Git
@@ -92,7 +93,8 @@ alias pwdcp='pwd | pbcopy'
 alias finddirs='find . -type d'
 
 #export SBT_OPTS="-Xmx8g"
-export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+# export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 
 # Kills all processes matching regex.
 function ekill() { ps aux | grep -e "$@" | grep -v grep | awk '{print $2}' | xargs -i kill -9 {}; }
@@ -130,19 +132,24 @@ alias cabalupgrades="cabal list --installed  | egrep -iv '(synopsis|homepage|lic
 alias fu=fileutil
 alias fucp="fu cp -parallel_copy=32"
 
-export CELL="vb"
+export CELL="ib"
 export CH=/cns/$CELL-d/home/ericmc
+export BH=/cns/$CELL-d/home/ericmc/2014_q3/brainData
 
 function waitDo() {
   while inotifywait -qq -r -e modify $1; do $2; echo "DONE"; done
 }
 
 function waitBuild () {
-  while inotifywait -qq -r -e modify $1; do blaze build -c opt $1/...; echo "DONE"; done
+  while inotifywait -qq -r -e modify $1; do time blaze build -c opt $1/... ; echo "DONE"; done
+}
+
+function waitBuildLocal () {
+  while inotifywait -qq -r -e modify $1; do time blaze build -c opt $1/... --noforge; echo "DONE"; done
 }
 
 function waitTest () {
-  while inotifywait -qq -r -e modify $1; do blaze test -c opt $1/...; echo "DONE"; done
+  while inotifywait -qq -r -e modify $1; do time blaze test -c opt $1/... --test_output=all; echo "DONE"; done
 }
 
 function reshard () {
@@ -176,3 +183,23 @@ function cpTiffs () {
 function cancelJobs() {
   borg --borg=$1 --user=ericmc lookupuser ericmc | xargs borg --borg=$1 --user=ericmc canceljob
 }
+
+function eCancelJobs() {
+  borg --borg=$1 --user=ericmc lookupuser ericmc | grep $2 | xargs borg --borg=$1 --user=ericmc canceljob
+}
+
+function rme() {
+  find $1 -regex ".*#.*" -exec rm {} \;
+}
+
+function rmcl() {
+  g4d $1; g4 change --revert_files -d $1; cd -
+}
+
+
+# The next line updates PATH for the Google Cloud SDK.
+# source '/usr/local/google/home/ericmc/google-cloud-sdk/path.bash.inc'
+
+# The next line enables bash completion for gcloud.
+# source '/usr/local/google/home/ericmc/google-cloud-sdk/completion.bash.inc'
+PATH=$PATH:/usr/local/google/home/ericmc/google-cloud-sdk/bin

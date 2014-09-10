@@ -7,12 +7,29 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
+(add-to-list 'el-get-recipe-path "~/dev/emacs/el-get/recipes")
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
-(el-get 'sync)
+(setq el-get-verbose t)
+
+(setq dim-packages
+      (append
+       ;; list of packages we use straight from official recipes
+       '(evil haskell-mode ghc-mod)
+
+       (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name el-get-sources))))
+
+(el-get 'sync dim-packages)
+
+(autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+
+;; (speedbar 1)
+;; (speedbar-add-supported-extension ".hs")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;(add-to-list 'load-path "~/.emacs.d")
+;; (add-to-list 'load-path "/google/src/head/depot/eng/elisp")
 ;(require 'google-specific)
 (require 'google)
 
@@ -22,6 +39,11 @@
 (add-hook 'python-mode-hook
   (lambda ()
     (add-hook 'before-save-hook 'google-pyformat nil t)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-to-list 'auto-mode-alist '("\\.pyplan\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.pynet\\'" . python-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; https://ghc.haskell.org/trac/ghc/wiki/Emacs
@@ -40,43 +62,14 @@
 ; Remove trailing whitespace on save.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-; Jump to first error.
-(global-set-key (kbd "M-g M-f") 'first-error)
-
 ; Show line and column numbers.
 (global-linum-mode t)
 (column-number-mode 1)
 
-; Cycle through buffers.
-(autoload 'cycle-buffer                     "cycle-buffer"
-  "Cycle forward." t)
-(autoload 'cycle-buffer-backward            "cycle-buffer"
-  "Cycle backward." t)
-(autoload 'cycle-buffer-permissive          "cycle-buffer"
-  "Cycle forward allowing *buffers*." t)
-(autoload 'cycle-buffer-backward-permissive "cycle-buffer"
-  "Cycle backward allowing *buffers*." t)
-(autoload 'cycle-buffer-toggle-interesting  "cycle-buffer"
-  "Toggle if this buffer will be considered." t)
-(global-set-key (kbd "M-<left>")        'cycle-buffer-backward)
-(global-set-key (kbd "M-<right>")       'cycle-buffer)
-;(global-set-key [(shift f9)]  'cycle-buffer-backward-permissive)
-;(global-set-key [(shift f10)] 'cycle-buffer-permissive)
+(global-set-key (kbd "M-<left>")        'previous-buffer)
+(global-set-key (kbd "M-<right>")       'next-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun select-next-window ()
-  "Switch to the next window"
-  (interactive)
-  (select-window (next-window)))
-
-(defun select-previous-window ()
-  "Switch to the previous window"
-  (interactive)
-  (select-window (previous-window)))
-
-(global-set-key (kbd "M-<up>") 'select-next-window)
-(global-set-key (kbd "M-<down>")  'select-previous-window)
 
 ;; Auto-refresh buffers when disk changes.
 (global-auto-revert-mode t)
@@ -104,10 +97,6 @@
 (require 'evil)
 (evil-mode 1)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(add-to-list 'auto-mode-alist '("\\.pyplan\\'" . python-mode))
-(add-to-list 'auto-mode-alist '("\\.pynet\\'" . python-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -131,13 +120,17 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+;; (eval-after-load "haskell-mode"
+    ;; '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
 
-(eval-after-load "haskell-mode"
-    '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
+;; (eval-after-load "haskell-cabal"
+    ;; '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
 
-(eval-after-load "haskell-cabal"
-    '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
+
+;; (add-to-list 'load-path "~/.emacs.d/structured-haskell-mode/elisp")
+;; (require 'shm)
+;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
+;; (setq shm-program-name "~/.emacs.d/structured-haskell-mode/dist/dist-sandbox-d68b3375/build/structured-haskell-mode")
 
 ;;(eval-after-load "haskell-mode"
 ;;  (define-key haskell-mode-map (kbd "C-c v c") 'haskell-cabal-visit-file))
@@ -147,8 +140,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(haskell-stylish-on-save t)
- '(haskell-tags-on-save t)
+ ;; '(haskell-stylish-on-save f)
+ ;; '(haskell-tags-on-save t)
  '(tab-width 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

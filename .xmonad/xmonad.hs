@@ -106,7 +106,7 @@ myConfig = gnomeConfig {
   manageHook = myManageHook,
   layoutHook = myLayoutHook,
   modMask = mod4Mask,
-  startupHook = setWMName "LG3D",
+  -- startupHook = setWMName "LG3D",
   keys = myKeys,
   workspaces = myWorkspaces }
 
