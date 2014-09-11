@@ -31,14 +31,14 @@
 
 ;; (add-to-list 'load-path "/google/src/head/depot/eng/elisp")
 ;(require 'google-specific)
-(require 'google)
+;(require 'google)
 
-(require 'google-go)
+;(require 'google-go)
 
-(require 'google-pyformat)
-(add-hook 'python-mode-hook
-  (lambda ()
-    (add-hook 'before-save-hook 'google-pyformat nil t)))
+;(require 'google-pyformat)
+;(add-hook 'python-mode-hook
+;  (lambda ()
+;    (add-hook 'before-save-hook 'google-pyformat nil t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
