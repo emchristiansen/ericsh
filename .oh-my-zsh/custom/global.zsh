@@ -1,9 +1,10 @@
-alias ezsh='e ~/.zshrc'
-alias vzsh='v ~/.zshrc'
+alias ezsh='e ~/.oh-my-zsh/custom/global.zsh'
+alias vzsh='v ~/.oh-my-zsh/custom/global.zsh'
 alias szsh='source ~/.zshrc'
 alias rh="runhaskell"
 alias xo='xdg-open'
 alias e='emacs -nw'
+alias vesh='vcsh ericsh'
 alias v='vim'
 alias s='~/bin/SublimeText2/sublime_text'
 function ns { nohup ~/bin/SublimeText2/sublime_text $1 &; }
