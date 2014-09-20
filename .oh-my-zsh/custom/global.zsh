@@ -1,3 +1,11 @@
+# Customize to your needs...
+export PATH=/opt/ghc/7.8.3/bin:/opt/cabal/1.20/bin:~/.cabal/bin:/usr/bin:$PATH:~/bin/scalaIDE:~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/bin/play:~/bin/activator:~/Library/Haskell/bin:/usr/local/MATLAB/R2013a/bin
+
+export PATH=$PATH:$GOPATH/bin:$HOME/bin/google-cloud-sdk/bin:$HOME/bin/ImageJ:$HOME/bin/julia
+export PATH=~/.cabal/bin:$PATH
+export PATH=~/bin/blender:$PATH
+export PATH=~/bin/stylish-haskell/.cabal-sandbox/bin:$PATH:~/bin/go_appengine
+
 alias ezsh='e ~/.oh-my-zsh/custom/global.zsh'
 alias vzsh='v ~/.oh-my-zsh/custom/global.zsh'
 alias szsh='source ~/.zshrc'

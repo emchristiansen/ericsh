@@ -9,12 +9,16 @@
 
 (add-to-list 'el-get-recipe-path "~/dev/emacs/el-get/recipes")
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(el-get 'sync)
 (setq el-get-verbose t)
 
 (setq dim-packages
       (append
        ;; list of packages we use straight from official recipes
        '(evil haskell-mode ghc-mod)
+        ;; evil 
+        ;; haskell-mode 
+         ;;ghc-mod
 
        (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name el-get-sources))))
 
@@ -23,6 +27,9 @@
 (autoload 'ghc-init "ghc" nil t)
 (autoload 'ghc-debug "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+(setq ghc-debug t)
+(require 'evil)
+(evil-mode 1)
 
 ;; (speedbar 1)
 ;; (speedbar-add-supported-extension ".hs")
@@ -94,8 +101,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'evil)
-(evil-mode 1)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
