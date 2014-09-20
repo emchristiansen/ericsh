@@ -51,12 +51,11 @@ source /etc/bash_completion.d/g4d
 #source ~/.secrets.sh
 
 # Customize to your needs...
-export PATH=~/.cabal/bin:/usr/bin:$PATH:~/bin/scalaIDE:~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/bin/play:~/bin/activator:~/Library/Haskell/bin:/usr/local/MATLAB/R2013a/bin
+export PATH=/opt/ghc/7.8.3/bin:/opt/cabal/1.20/bin:~/.cabal/bin:~/bin/hakyll/.cabal-sandbox/bin:/usr/bin:$PATH:~/bin/scalaIDE:~/bin/eclipse:/usr/local/Cellar/emacs/24.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/bin/play:~/bin/activator:~/Library/Haskell/bin:/usr/local/MATLAB/R2013a/bin
 
 #export GOPATH=$HOME/Dropbox/t/2014_q2/go
 export GOROOT=/usr/lib/google-golang
 export PATH=$PATH:$GOPATH/bin:$HOME/bin/google-cloud-sdk/bin:$HOME/bin/ImageJ:$HOME/bin/julia
-export PATH=~/.cabal/bin:$PATH
 export PATH=~/bin/blender:$PATH
 export PATH=~/bin/stylish-haskell/.cabal-sandbox/bin:$PATH:~/bin/go_appengine
 
@@ -203,3 +202,5 @@ function rmcl() {
 # The next line enables bash completion for gcloud.
 # source '/usr/local/google/home/ericmc/google-cloud-sdk/completion.bash.inc'
 PATH=$PATH:/usr/local/google/home/ericmc/google-cloud-sdk/bin
+
+REPORTTIME=1

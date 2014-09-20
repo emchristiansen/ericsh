@@ -8,7 +8,11 @@
 -- used to indicate layout for nested sections.
 
 
-remote-repo: hackage.haskell.org:http://hackage.haskell.org/packages/archive
+-- remote-repo: hackage.haskell.org:http://hackage.haskell.org/packages/archive
+-- Inclusive
+-- remote-repo: stackage:http://www.stackage.org/stackage/41942a44df7dd98ced76ae1ea6c41e9f5fed746d
+-- Inclusive + Haskell Platform
+remote-repo: stackage:http://www.stackage.org/stackage/77b7fb7541411b7c50b0f7cdd3ac8ef833bcaeee
 remote-repo-cache: /usr/local/google/home/ericmc/.cabal/packages
 -- local-repo:
 -- logs-dir:
@@ -18,14 +22,14 @@ world-file: /usr/local/google/home/ericmc/.cabal/world
 -- with-compiler:
 -- with-hc-pkg:
 -- scratchdir:
--- program-prefix: 
--- program-suffix: 
+-- program-prefix:
+-- program-suffix:
 -- library-vanilla: True
-library-profiling:True 
--- shared: False
+-- library-profiling:True
+-- shared: True
 -- executable-dynamic: False
-executable-profiling: True
-optimization: True
+-- executable-profiling: True
+-- optimization: False
 -- library-for-ghci: True
 -- split-objs: False
 -- executable-stripping: True
