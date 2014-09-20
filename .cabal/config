@@ -13,10 +13,11 @@
 -- remote-repo: stackage:http://www.stackage.org/stackage/41942a44df7dd98ced76ae1ea6c41e9f5fed746d
 -- Inclusive + Haskell Platform
 remote-repo: stackage:http://www.stackage.org/stackage/77b7fb7541411b7c50b0f7cdd3ac8ef833bcaeee
-remote-repo-cache: /usr/local/google/home/ericmc/.cabal/packages
+-- remote-repo-cache: /usr/local/google/home/ericmc/.cabal/packages
+-- remote-repo-cache: /home/eric/.cabal/packages
 -- local-repo:
 -- logs-dir:
-world-file: /usr/local/google/home/ericmc/.cabal/world
+-- world-file: /home/eric/.cabal/world
 -- verbose: 1
 -- compiler: ghc
 -- with-compiler:
@@ -25,11 +26,11 @@ world-file: /usr/local/google/home/ericmc/.cabal/world
 -- program-prefix:
 -- program-suffix:
 -- library-vanilla: True
--- library-profiling:True
--- shared: True
+-- library-profiling:False
+-- shared: False
 -- executable-dynamic: False
--- executable-profiling: True
--- optimization: False
+-- executable-profiling: False
+-- optimization: True
 -- library-for-ghci: True
 -- split-objs: False
 -- executable-stripping: True
@@ -45,7 +46,7 @@ world-file: /usr/local/google/home/ericmc/.cabal/world
 -- constraint:
 -- preference:
 -- solver: choose
--- documentation: False
+documentation: True
 -- doc-index-file: $datadir/doc/index.html
 -- max-backjumps: 200
 -- reorder-goals: False
@@ -57,7 +58,7 @@ world-file: /usr/local/google/home/ericmc/.cabal/world
 -- only-dependencies: False
 -- root-cmd:
 -- symlink-bindir:
-build-summary: /usr/local/google/home/ericmc/.cabal/logs/build.log
+-- build-summary: /home/eric/.cabal/logs/build.log
 -- build-log:
 remote-build-reporting: anonymous
 -- one-shot: False
@@ -66,9 +67,9 @@ remote-build-reporting: anonymous
 -- password:
 
 install-dirs user
-   prefix: /usr/local/google/home/ericmc/.cabal
-   bindir: $prefix/bin
-   libdir: $prefix/lib
+   -- prefix: /home/eric/.cabal
+   -- bindir: $prefix/bin
+   -- libdir: $prefix/lib
   -- libsubdir: $pkgid/$compiler
   -- libexecdir: $prefix/libexec
   -- datadir: $prefix/share
